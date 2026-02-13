@@ -1,0 +1,23 @@
+# --- Lingkungan Virtual (PENTING: Jangan upload venv ke GitHub) ---
+venv/
+env/
+.venv/
+
+# --- Cache Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- File Sistem Operasi ---
+.DS_Store
+Thumbs.db
+
+# --- Konfigurasi IDE/Editor ---
+.vscode/
+.idea/
+
+# --- Log dan Database Lokal (Jika pakai SQLite, tapi kita pakai MySQL) ---
+*.log
+
+# --- File Rahasia (PENTING: Jika nanti Anda pakai file .env untuk password DB) ---
+.env

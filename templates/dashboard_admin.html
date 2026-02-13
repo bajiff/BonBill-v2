@@ -1,0 +1,84 @@
+{% extends "base_admin.html" %}
+
+{% block title %}Semua Reservasi - BonBill{% endblock %}
+{% block header_title %}Manajemen Reservasi{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+        <div>
+            <h2 class="text-2xl font-bold text-gray-800">Daftar Semua Booking</h2>
+            <p class="text-gray-500 text-sm">Pantau dan kelola jadwal bermain pelanggan.</p>
+        </div>
+        
+        <a href="/admin/add_booking" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2.5 px-5 rounded-lg shadow-sm transition-colors flex items-center gap-2 text-sm">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+            Tambah Booking Manual
+        </a>
+    </div>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="mb-6">
+          {% for message in messages %}
+            <div class="px-4 py-3 rounded-lg border shadow-sm bg-green-50 border-green-200 text-green-800">
+                {{ message }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse whitespace-nowrap">
+                <thead>
+                    <tr class="bg-emerald-600 text-white text-sm uppercase tracking-wide">
+                        <th class="px-5 py-4">ID</th>
+                        <th class="px-5 py-4">Pelanggan</th>
+                        <th class="px-5 py-4">Meja</th>
+                        <th class="px-5 py-4">Waktu Mulai</th>
+                        <th class="px-5 py-4">Durasi</th>
+                        <th class="px-5 py-4 text-center">Status</th>
+                        <th class="px-5 py-4 text-center">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    {% for b in bookings %}
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-5 py-4 font-medium text-gray-900">#{{ b.id }}</td>
+                        <td class="px-5 py-4 font-semibold text-emerald-700">{{ b.username }}</td>
+                        <td class="px-5 py-4 text-gray-600">{{ b.table_number }}</td>
+                        <td class="px-5 py-4 text-gray-600">{{ b.start_time.strftime('%d-%m-%Y %H:%M') }}</td>
+                        <td class="px-5 py-4 text-gray-600">{{ b.duration }} Jam</td>
+                        <td class="px-5 py-4 text-center">
+                            <span class="px-3 py-1 text-xs font-semibold rounded-full 
+                                {% if b.status == 'Selesai' %} bg-green-100 text-green-800 
+                                {% elif b.status == 'Batal' %} bg-red-100 text-red-800 
+                                {% elif b.status == 'Bermain' %} bg-blue-100 text-blue-800 
+                                {% else %} bg-yellow-100 text-yellow-800 {% endif %}">
+                                {{ b.status }}
+                            </span>
+                        </td>
+                        <td class="px-5 py-4 text-center space-x-2">
+                            <a href="/admin/edit_booking/{{ b.id }}" class="inline-block bg-emerald-50 text-emerald-600 hover:bg-emerald-100 px-3 py-1.5 rounded text-sm font-medium transition-colors border border-emerald-200">
+                                Edit
+                            </a>
+                            <a href="/admin/delete/{{ b.id }}" onclick="return confirm('Yakin ingin menghapus riwayat ini permanen?');" class="inline-block bg-red-50 text-red-600 hover:bg-red-100 px-3 py-1.5 rounded text-sm font-medium transition-colors border border-red-200">
+                                Hapus
+                            </a>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="7" class="px-6 py-8 text-center text-gray-500 italic">
+                            Belum ada data reservasi.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

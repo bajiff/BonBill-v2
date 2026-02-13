@@ -1,0 +1,149 @@
+/* --- Variabel Warna & Font --- */
+:root {
+    --primary-color: #27ae60; /* Hijau Billiard */
+    --primary-hover: #219150;
+    --bg-color: #f4f7f6;
+    --text-color: #333;
+    --container-bg: #ffffff;
+    --border-color: #ddd;
+    --danger-color: #e74c3c;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* --- Layout Dasar --- */
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    background: var(--container-bg);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+h2, h3 {
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: var(--border-color);
+    margin: 20px 0;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* --- Form & Input --- */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="datetime-local"],
+select {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100%;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: var(--primary-hover);
+}
+
+/* --- Notifikasi (Flash Messages) --- */
+.flashes {
+    list-style-type: none;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #ffeaa7;
+    border-left: 4px solid #fdcb6e;
+    border-radius: 4px;
+}
+
+.flashes li {
+    color: #d63031;
+    font-weight: bold;
+}
+
+/* --- Tabel Data (Dashboard) --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background-color: var(--container-bg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* --- Utilitas --- */
+.text-danger {
+    color: var(--danger-color);
+}
+
+/* Responsif untuk tabel di layar kecil */
+@media (max-width: 768px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
