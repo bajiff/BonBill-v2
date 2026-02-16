@@ -90,6 +90,7 @@ Constraint: Penggunaan Foreign Key dengan Cascade Delete untuk menjaga integrita
 
 📂 Struktur Proyek
 Plaintext
+
 .
 ├── app.py              # File utama aplikasi Flask
 ├── init_db.py          # Script inisialisasi database SQLite
@@ -101,6 +102,7 @@ Plaintext
 │   ├── base_user.html  # Layout Master User
 │   └── ...             # Halaman fitur lainnya
 └── static/             # File statis (CSS/JS tambahan)
+
 📝 Pengumpulan Tugas
 Sesuai instruksi tugas akhir, proyek ini menyertakan:
 
