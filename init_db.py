@@ -1,8 +1,8 @@
 import sqlite3
 from werkzeug.security import generate_password_hash
 
-# Ini akan otomatis membuat file 'db_bonbill.db' di folder Anda
-conn = sqlite3.connect('db_bonbill.db')
+# Ini akan otomatis membuat file 'bonbill.db' di folder Anda
+conn = sqlite3.connect('bonbill.db')
 cursor = conn.cursor()
 
 print("Mulai membuat tabel SQLite...")

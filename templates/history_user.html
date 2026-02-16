@@ -22,7 +22,7 @@
                     <tr class="hover:bg-gray-50 transition-colors">
                         <td class="px-6 py-4 font-medium text-gray-900">#{{ b.id }}</td>
                         <td class="px-6 py-4 text-emerald-700 font-semibold">Meja {{ b.table_number }}</td>
-                        <td class="px-6 py-4">{{ b.start_time.strftime('%d-%m-%Y %H:%M') }}</td>
+                        <td class="px-6 py-4">{{ b.start_time | format_datetime }}</td>
                         <td class="px-6 py-4">{{ b.duration }} Jam</td>
                         <td class="px-6 py-4 text-center">
                             <span class="px-3 py-1 text-sm font-semibold rounded-full 
@@ -37,7 +37,7 @@
                     {% else %}
                     <tr>
                         <td colspan="5" class="px-6 py-8 text-center text-gray-500 italic">
-                            Anda belum memiliki riwayat booking.
+                        <a href="/user/edit_booking/{{ b.id }}" class="text-blue-600 hover:underline">Edit</a>
                         </td>
                     </tr>
                     {% endfor %}
